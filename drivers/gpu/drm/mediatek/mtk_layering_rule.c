@@ -196,7 +196,7 @@ static void filter_by_yuv_layers(struct drm_mtk_layering_info *disp_info)
 					yuv_gpu_cnt++;
 				}
 			}
-			if (info->dst_width==720 && info->dst_height==1600) {
+			if (info->dst_width==1080 && info->dst_height==2400) {
 				mtk_rollback_layer_to_GPU(disp_info,
 					disp_idx, i);
  			}
