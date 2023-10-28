@@ -4306,7 +4306,6 @@ static void __mem_cgroup_free(struct mem_cgroup *memcg)
 		free_mem_cgroup_per_node_info(memcg, node);
 	/* poison memcg before freeing it */
 	memset(memcg, 0x78, sizeof(struct mem_cgroup));
-	free_percpu(memcg->stat_cpu);
 	lru_gen_free_mm_list(memcg);
 	kfree(memcg);
 }

@@ -3984,7 +3984,6 @@ static int scan_pages(struct lruvec *lruvec, struct scan_control *sc, long *nr_t
 	int isolated = 0;
 	int batch_size = 0;
 	struct lrugen *lrugen = &lruvec->evictable;
-	struct mem_cgroup *memcg = lruvec_memcg(lruvec);
 
 	VM_BUG_ON(!list_empty(list));
 
@@ -4043,8 +4042,6 @@ static int scan_pages(struct lruvec *lruvec, struct scan_control *sc, long *nr_t
 		__count_vm_events(item, isolated);
 		__count_vm_events(PGREFILL, sorted);
 	}
-	__count_memcg_events(memcg, item, isolated);
-	__count_memcg_events(memcg, PGREFILL, sorted);
 
 	*nr_to_scan -= scanned;
 	sc->nr_scanned += sorted;
@@ -4206,7 +4203,6 @@ static bool evict_pages(struct lruvec *lruvec, struct scan_control *sc, int swap
 	item = current_is_kswapd() ? PGSTEAL_KSWAPD : PGSTEAL_DIRECT;
 	if (global_reclaim(sc))
 		__count_vm_events(item, reclaimed);
-	__count_memcg_events(lruvec_memcg(lruvec), item, reclaimed);
 
 	spin_unlock_irq(&pgdat->lru_lock);
 
