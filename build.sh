@@ -55,10 +55,6 @@ rm -rf AnyKernel3
 rm -rf out/arch/arm64/boot
 echo -e "\nCompleted in $((SECONDS / 60)) minute(s) and $((SECONDS % 60)) second(s) !"
 echo "Zip: $ZIPNAME"
-if ! [[ $HOSTNAME = "gitpod" && $USER = "nobody" ]]; then
-curl --upload-file $ZIPNAME http://oshi.at/$ZIPNAME; echo
-fi
 else
 echo -e "\nCompilation failed!"
-exit 1
 fi
