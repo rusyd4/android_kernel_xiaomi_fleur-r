@@ -4312,7 +4312,7 @@ enum sctp_disposition sctp_sf_eat_auth(struct net *net,
 				    SCTP_AUTH_NEWKEY, GFP_ATOMIC);
 
 		if (!ev)
-			return SCTP_DISPOSITION_NOMEM;
+			return -ENOMEM;
 
 		sctp_add_cmd_sf(commands, SCTP_CMD_EVENT_ULP,
 				SCTP_ULPEVENT(ev));
