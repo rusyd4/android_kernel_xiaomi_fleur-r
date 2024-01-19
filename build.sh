@@ -4,7 +4,7 @@
 
 SECONDS=0 # builtin bash timer
 ZIPNAME="crawford.kernel-fleur-rvendor-$(date '+%Y%m%d-%H%M').zip"
-TC_DIR="$HOME/tc/clang"
+TC_DIR="$HOME/tc/azure15"
 AK3_DIR="$HOME/android/AnyKernel3"
 DEFCONFIG="fleur_defconfig"
 
